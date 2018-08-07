@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record model="ir.ui.view" id="qbo_view_company_form">
+		<field name="name">qbo.view.company.form</field>
+		<field name="model">res.company</field>
+		<field name="inherit_id" ref="base.view_company_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook/page[1]" position="after">
+				<page string="QuickBooks">
+					<separator name="configuration" string="QuickBooks Configuration"/>
+					<div>
+						<span>
+							<button string='Authenticate' type="object" name="login" class="oe_highlight" icon="fa-plug"/>
+						</span>
+						<span>
+							<button string='Refresh Token' type="object" name="refresh_token" class="oe_highlight" icon="fa-refresh" style="margin-left: 20px;"/>
+						</span>
+					</div>
+					<notebook>
+					<page name="initial_sync" string='Initial Sync'>
+					<separator name='sync' string='Initial Sync'/>
+					<!-- <group>
+						<group>
+							<button string="1-Sync Partner" type="object" name="importcust" class="oe_highlight" icon="fa-arrow-circle-down"/>
+						</group>
+						<group>
+							<field name="x_quickbooks_last_customer_sync" />
+							<field name="x_quickbooks_last_customer_imported_id" />
+						</group>
+					</group> -->
+					<group>
+						<group>
+							<button string="1-Sync Customer" type="object" name="import_customers" class="oe_highlight" icon="fa-arrow-circle-down"/>
+						</group>
+						<group>
+							<field name="last_imported_customer_id" />
+						</group>
+					</group>
+					<group>
+						<group>
+							<button string="2-Sync Vendor" type="object" name="import_vendors" class="oe_highlight" icon="fa-arrow-circle-down"/>
+						</group>
+						<group>
+							<field name="last_imported_vendor_id" />
+						</group>
+					</group>
+					<group>
+						<group>
+							<button string="3-Sync Account" type="object" name="import_chart_of_accounts" class="oe_highlight" icon="fa-arrow-circle-down"/>
+						</group>
+						<group>
+							<field name="last_acc_imported_id" />
+						</group>
+					</group>
+					<!-- <group>
+						<group>
+							<button string="3-Sync Tax Agency" type="object" name="import_tax_agency" class="oe_highlight" icon="fa-arrow-circle-down"/>
+						</group>
+						<group>
+							<field name="last_imported_tax_agency_id" />
+						</group>
+					</group> -->
+					<group>
+						<group>
+							<button string="4-Sync Account tax" type="object" name="import_tax" class="oe_highlight" icon="fa-arrow-circle-down"/>
+						</group>
+						<group>
+							<field name="last_imported_tax_id" />
+						</group>
+					</group>
+					<group>
+						<group>
+							<button string="5-Sync Product Category" type="object" name="import_product_category" class="oe_highlight" icon="fa-arrow-circle-down"/>
+						</group>
+						<group>
+							<field name="last_imported_product_category_id"/> <!-- readonly="1" -->
+						</group>
+					</group>
+					<group>
+						<group>
+							<button string="6-Sync Product" type="object" name="import_product" class="oe_highlight" icon="fa-arrow-circle-down"/>
+						</group>
+						<group>
+							<field name="last_imported_product_id"/>
+						</group>
+					</group>
+					<group>
+						<group>
+							<button string="7-Sync Payment Method" type="object" name="import_payment_method" class="oe_highlight" icon="fa-arrow-circle-down"/>
+						</group>
+						<group>
+							<field name="last_imported_payment_method_id"/>
+						</group>
+					</group>
+					<group>
+						<group>
+							<button string="8-Sync Payment Term" type="object" name="import_payment_term_from_quickbooks" class="oe_highlight" icon="fa-arrow-circle-down"/>
+						</group>
+						<group>
+							<field name="x_quickbooks_last_paymentterm_imported_id"/>
+						</group>
+					</group>
+					<group>
+						<group>
+							<button string="9-Sync Customer Payment" type="object" name="import_payment" class="oe_highlight" icon="fa-arrow-circle-down"/>
+						</group>
+						<group>
+							<field name="last_imported_payment_id"/>
+						</group>
+					</group>
+					<group>
+						<group>
+							<button string="9-Sync Vendor Payment" type="object" name="import_bill_payment" class="oe_highlight" icon="fa-arrow-circle-down"/>
+						</group>
+						<group>
+							<field name="last_imported_bill_payment_id"/>
+						</group>
+					</group>
+					
+					<group>
+						<group>
+							<button string="10-Import Inventory" type="object" name="import_inventory" class="oe_highlight" icon="fa-arrow-circle-down"/>
+						</group>
+					</group>
+					
+					</page>
+					<page name="credentials" string="Credentials">
+					<group string="Credentials">
+						<group name="Credential">
+							<field name="client_id" />
+							<field name="client_secret" />
+							<!-- <field name="access_token"/>
+							<field name="qbo_refresh_token"/> -->
+							<field name="access_token_expire_in" readonly="1"/>
+							<field name="refresh_token_expire_in" readonly="1"/>
+							<field name="minorversion"/>
+						</group>
+						<group name="Url">
+							<field name="auth_base_url" />
+							<field name="access_token_url" />
+							<field name="request_token_url" />
+							<field name="url"/>
+						</group>
+					</group>
+					</page>
+					</notebook>
+				</page>
+			</xpath>
+		</field>
+	</record>
+</odoo>
